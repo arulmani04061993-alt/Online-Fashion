@@ -82,7 +82,7 @@
           <i class="fa-solid fa-magnifying-glass"></i>
         </a>
         <button class="header-icon-btn" id="wishlist-toggle-header" title="Wishlist Items"
-          onclick="window.StacklyApp.filterByCategory('womens-dresses');" aria-label="Wishlist">
+          onclick="window.StacklyApp.openWishlist();" aria-label="Open Wishlist">
           <i class="fa-regular fa-heart"></i>
           <span class="badge-count" id="wishlist-count-badge" style="display: none;">0</span>
         </button>
@@ -939,6 +939,29 @@
       </div>
     </div>
   </div>
+
+  <!-- ========================================================================
+       SLIDEOUT DRAWER: WISHLIST
+       ======================================================================== -->
+  <div class="drawer-backdrop" id="wishlist-backdrop"></div>
+  <aside class="wishlist-drawer" id="wishlist-drawer" aria-label="Wishlist">
+    <div class="wishlist-header">
+      <h3><i class="fa-solid fa-heart" style="color: var(--color-accent-gold-dark);"></i> Your Wishlist</h3>
+      <button class="header-icon-btn" id="wishlist-close-btn" aria-label="Close Wishlist">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="wishlist-items-container" id="wishlist-items-list">
+      <!-- Populated dynamically -->
+    </div>
+
+    <div class="wishlist-footer">
+      <button class="btn btn-primary" onclick="window.StacklyApp.closeWishlist(); const c = document.getElementById('catalog-section'); if(c) c.scrollIntoView({behavior:'smooth'});" style="width: 100%;">
+        <i class="fa-solid fa-bag-shopping"></i> Continue Shopping
+      </button>
+    </div>
+  </aside>
 
   <!-- ========================================================================
        SLIDEOUT DRAWER: SHOPPING BAG / CART

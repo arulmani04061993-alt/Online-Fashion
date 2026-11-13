@@ -51,6 +51,11 @@
     loadMoreContainer: document.getElementById('load-more-container'),
     cartCountBadge: document.getElementById('cart-count-badge'),
     wishlistCountBadge: document.getElementById('wishlist-count-badge'),
+    wishlistDrawer: document.getElementById('wishlist-drawer'),
+    wishlistBackdrop: document.getElementById('wishlist-backdrop'),
+    wishlistCloseBtn: document.getElementById('wishlist-close-btn'),
+    wishlistToggleHeader: document.getElementById('wishlist-toggle-header'),
+    wishlistItemsList: document.getElementById('wishlist-items-list'),
     cartDrawer: document.getElementById('cart-drawer'),
     cartBackdrop: document.getElementById('cart-backdrop'),
     cartCloseBtn: document.getElementById('cart-close-btn'),
@@ -667,6 +672,61 @@
       DOM.wishlistCountBadge.textContent = count;
       DOM.wishlistCountBadge.style.display = count > 0 ? 'flex' : 'none';
     }
+
+    if (!DOM.wishlistItemsList) return;
+
+    if (state.wishlist.length === 0) {
+      DOM.wishlistItemsList.innerHTML = `
+        <div class="wishlist-empty-state">
+          <i class="fa-regular fa-heart"></i>
+          <h4>Your Wishlist is Empty</h4>
+          <p>Tap the heart icon on any piece to save your favorite couture designs here.</p>
+        </div>
+      `;
+      return;
+    }
+
+    const wishlistedProducts = state.allProducts.filter(p => state.wishlist.includes(p.id));
+
+    DOM.wishlistItemsList.innerHTML = wishlistedProducts.map(product => {
+      const displayImg = product.displayImage || product.thumbnail;
+      return `
+        <div class="wishlist-item">
+          <img 
+            src="${displayImg}" 
+            alt="${escapeHTML(product.title)}" 
+            class="wishlist-item-img" 
+            onclick="window.StacklyApp.closeWishlist(); window.StacklyApp.openProductModal(${product.id})"
+          />
+          <div class="wishlist-item-details">
+            <h4 class="wishlist-item-title" onclick="window.StacklyApp.closeWishlist(); window.StacklyApp.openProductModal(${product.id})">
+              ${escapeHTML(product.title)}
+            </h4>
+            <span class="wishlist-item-price">$${product.price.toFixed(2)}</span>
+            <div class="wishlist-item-actions">
+              <button class="wishlist-btn-add" onclick="window.StacklyApp.addToCart(${product.id}); window.StacklyApp.closeWishlist();">
+                <i class="fa-solid fa-bag-shopping"></i> Add to Bag
+              </button>
+              <button class="wishlist-item-remove" onclick="window.StacklyApp.toggleWishlist(${product.id})" title="Remove from Wishlist">
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  function openWishlist() {
+    if (DOM.wishlistDrawer) DOM.wishlistDrawer.classList.add('open');
+    if (DOM.wishlistBackdrop) DOM.wishlistBackdrop.classList.add('active');
+    document.body.classList.add('modal-open');
+  }
+
+  function closeWishlist() {
+    if (DOM.wishlistDrawer) DOM.wishlistDrawer.classList.remove('open');
+    if (DOM.wishlistBackdrop) DOM.wishlistBackdrop.classList.remove('active');
+    document.body.classList.remove('modal-open');
   }
 
   /* ==========================================================================
@@ -1014,6 +1074,11 @@
       });
     }
 
+    // Wishlist Drawer Toggle
+    if (DOM.wishlistToggleHeader) DOM.wishlistToggleHeader.addEventListener('click', openWishlist);
+    if (DOM.wishlistCloseBtn) DOM.wishlistCloseBtn.addEventListener('click', closeWishlist);
+    if (DOM.wishlistBackdrop) DOM.wishlistBackdrop.addEventListener('click', closeWishlist);
+
     // Cart Drawer Toggle
     if (DOM.cartToggleBtn) DOM.cartToggleBtn.addEventListener('click', openCart);
     if (DOM.cartCloseBtn) DOM.cartCloseBtn.addEventListener('click', closeCart);
@@ -1103,6 +1168,7 @@
         closeProductModal();
         closeOrderModal();
         closeCart();
+        closeWishlist();
         closeMobileNav();
       }
     });
@@ -1118,6 +1184,8 @@
     closeProductModal,
     openCart,
     closeCart,
+    openWishlist,
+    closeWishlist,
     applyCoupon,
     copyCoupon,
     selectMembership: (tierName, price) => {
