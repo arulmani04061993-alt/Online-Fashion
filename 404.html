@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>404 - Page Not Found | STACKLY</title>
+  <title>404 - Lookbook Not Found | STACKLY</title>
 
   <!-- Google Web Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,159 +16,56 @@
   <!-- Custom Stylesheet -->
   <link rel="stylesheet" href="assets/css/styles.css" />
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(135deg, #181818 0%, #0d0d0d 100%);
-      color: #ffffff;
+    .error-hero {
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
-      position: relative;
-    }
-
-    /* Ambient glow circles */
-    .ambient-glow {
-      position: absolute;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(197, 168, 128, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .ambient-glow-1 {
-      top: -100px;
-      left: -100px;
-    }
-
-    .ambient-glow-2 {
-      bottom: -150px;
-      right: -100px;
-    }
-
-    .error-wrapper {
-      position: relative;
-      z-index: 2;
       text-align: center;
-      max-width: 640px;
-      padding: 3rem 2rem;
-      background: rgba(26, 26, 26, 0.6);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(197, 168, 128, 0.25);
-      border-radius: var(--radius-lg);
-      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6);
-      margin: 1.5rem;
+      padding: 4rem 1.5rem;
+      background: linear-gradient(135deg, #fcfbf9 0%, #f6f3ee 100%);
     }
-
-    .error-logo {
-      display: inline-block;
-      margin-bottom: 2rem;
-    }
-
-    .error-logo img {
-      height: 44px;
-      width: auto;
-      object-fit: contain;
-    }
-
     .error-code {
       font-family: var(--font-serif);
-      font-size: clamp(6.5rem, 16vw, 9.5rem);
+      font-size: clamp(6rem, 15vw, 12rem);
       font-weight: 700;
-      line-height: 0.95;
-      background: linear-gradient(135deg, #e4cca8 0%, #c5a880 50%, #8c6d42 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 1rem;
-      letter-spacing: -0.02em;
+      line-height: 1;
+      color: var(--color-accent-gold-dark);
+      opacity: 0.35;
+      margin-bottom: -2rem;
     }
-
-    .error-badge {
-      display: inline-block;
-      background: rgba(197, 168, 128, 0.15);
-      color: var(--color-accent-gold);
-      border: 1px solid rgba(197, 168, 128, 0.35);
-      padding: 0.35rem 1rem;
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      border-radius: var(--radius-full);
-      margin-bottom: 1.25rem;
-    }
-
     .error-title {
       font-family: var(--font-serif);
-      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
-      font-weight: 600;
-      color: #ffffff;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--color-primary);
       margin-bottom: 1rem;
-      line-height: 1.25;
     }
-
-    .error-title em {
-      font-style: italic;
-      color: var(--color-accent-gold);
-    }
-
     .error-desc {
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 1rem;
-      line-height: 1.7;
-      margin-bottom: 2.5rem;
-      max-width: 480px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .error-actions {
-      display: flex;
-      gap: 1.25rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .error-actions .btn {
-      min-width: 180px;
+      max-width: 520px;
+      margin: 0 auto 2.5rem auto;
+      color: var(--color-text-muted);
+      font-size: 1.05rem;
     }
   </style>
 </head>
 <body>
 
-  <!-- Ambient Luxury Glow Elements -->
-  <div class="ambient-glow ambient-glow-1"></div>
-  <div class="ambient-glow ambient-glow-2"></div>
-
-  <!-- Standalone 404 Modal / Card (No Navbar, No Footer) -->
-  <main class="error-wrapper">
-    <div class="error-logo">
-      <a href="index.html" aria-label="Stackly Home">
-        <img src="assets/images/stackly-logo.webp" alt="Stackly Logo" />
-      </a>
-    </div>
-
-    <div class="error-badge">Error 404 • Lost Runway Edition</div>
-
-    <div class="error-code">404</div>
-
-    <h1 class="error-title">Page Out of <em>Haute Couture</em> Rotation</h1>
-
-    <p class="error-desc">
-      The bespoke piece, lookbook page, or archive you are seeking is unavailable or has been retired to our private vault.
-    </p>
-
-    <div class="error-actions">
-      <a href="index.html" class="btn btn-accent">
-        <i class="fa-solid fa-house"></i> Return to Boutique
-      </a>
-      <a href="index.html#catalog-section" class="btn btn-outline-white">
-        <i class="fa-solid fa-bag-shopping"></i> Browse Catalog
-      </a>
+  <!-- 404 Hero Section (Previous UI with Navbar & Footer Removed) -->
+  <main class="error-hero">
+    <div class="container">
+      <div class="error-code">404</div>
+      <h1 class="error-title">Page Out of Haute Couture Rotation</h1>
+      <p class="error-desc">
+        The bespoke archival piece or lookbook page you are seeking has retired to our private vault or never existed. Allow us to escort you back to our active runway showcase.
+      </p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="index.html" class="btn btn-primary">
+          <i class="fa-solid fa-house"></i> Boutique Home
+        </a>
+        <a href="index.html#catalog-section" class="btn btn-accent">
+          <i class="fa-solid fa-bag-shopping"></i> Browse Catalog
+        </a>
+      </div>
     </div>
   </main>
 
