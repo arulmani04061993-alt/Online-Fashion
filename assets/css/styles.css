@@ -564,12 +564,14 @@ ul, ol {
   z-index: 9998;
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .drawer-backdrop.active {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
 }
 
 /* ==========================================================================
@@ -2062,8 +2064,8 @@ ul, ol {
   height: 100vh;
   height: 100dvh;
   background: #ffffff;
-  z-index: 3100;
-  box-shadow: var(--shadow-lg);
+  z-index: 10000;
+  box-shadow: -10px 0 35px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
   transform: translateX(100%);
@@ -2226,8 +2228,8 @@ ul, ol {
   height: 100vh;
   height: 100dvh;
   background: #ffffff;
-  z-index: 3100;
-  box-shadow: var(--shadow-lg);
+  z-index: 10000;
+  box-shadow: -10px 0 35px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
   transform: translateX(100%);
@@ -2545,6 +2547,11 @@ ul, ol {
 }
 
 @media (max-width: 768px) {
+  .wishlist-drawer,
+  .cart-drawer {
+    width: 100% !important;
+    max-width: 100vw !important;
+  }
   .header-container {
     padding: 0 0.25rem;
     gap: 0.5rem;
