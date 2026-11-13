@@ -504,6 +504,51 @@
     showToast('Item removed from cart', 'info');
   }
 
+  function copyCoupon(code, btnElement) {
+    if (!code) return;
+    const cleanCode = code.toUpperCase().trim();
+
+    const doSuccess = () => {
+      showToast(`Coupon "${cleanCode}" copied to clipboard!`, 'success');
+      if (btnElement) {
+        const icon = btnElement.querySelector('i');
+        if (icon) {
+          const originalClass = icon.className;
+          icon.className = 'fa-solid fa-check';
+          setTimeout(() => {
+            icon.className = originalClass;
+          }, 2000);
+        }
+      }
+    };
+
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(cleanCode).then(doSuccess).catch(() => {
+        fallbackCopyText(cleanCode, doSuccess);
+      });
+    } else {
+      fallbackCopyText(cleanCode, doSuccess);
+    }
+  }
+
+  function fallbackCopyText(text, callback) {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.style.position = 'fixed';
+    textarea.style.left = '-9999px';
+    textarea.style.top = '0';
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+    try {
+      document.execCommand('copy');
+      if (callback) callback();
+    } catch (err) {
+      showToast(`Coupon code is ${text}`, 'info');
+    }
+    document.body.removeChild(textarea);
+  }
+
   function applyCoupon(code) {
     const cleanCode = (code || '').toUpperCase().trim();
     if (!cleanCode) {
@@ -1074,6 +1119,7 @@
     openCart,
     closeCart,
     applyCoupon,
+    copyCoupon,
     selectMembership: (tierName, price) => {
       showToast(`Selected "${tierName}" Membership ($${price}/mo). Welcome to Stackly Society!`, 'success');
       const checkoutEl = document.getElementById('pricing');
