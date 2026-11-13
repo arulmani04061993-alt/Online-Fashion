@@ -711,9 +711,9 @@
             </h4>
             <span class="wishlist-item-price">$${product.price.toFixed(2)}</span>
             <div class="wishlist-item-actions">
-              <button class="wishlist-btn-add" onclick="window.StacklyApp.addToCart(${product.id}); window.StacklyApp.closeWishlist();">
+              <a href="404.html" class="wishlist-btn-add">
                 <i class="fa-solid fa-bag-shopping"></i> Add to Bag
-              </button>
+              </a>
               <button class="wishlist-item-remove" onclick="window.StacklyApp.toggleWishlist(${product.id})" title="Remove from Wishlist">
                 <i class="fa-solid fa-trash-can"></i>
               </button>
