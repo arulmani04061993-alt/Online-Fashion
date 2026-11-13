@@ -605,7 +605,12 @@
 
     DOM.cartItemsList.innerHTML = state.cart.map(item => `
       <div class="cart-item">
-        <img src="${item.image}" alt="${escapeHTML(item.title)}" class="cart-item-img" />
+        <img 
+          src="${item.image}" 
+          alt="${escapeHTML(item.title)}" 
+          class="cart-item-img" 
+          onerror="this.onerror=null; this.src='assets/images/products/prod_${item.id}.webp';"
+        />
         <div class="cart-item-details">
           <h4 class="cart-item-title">${escapeHTML(item.title)}</h4>
           <span class="cart-item-price">$${item.price.toFixed(2)}</span>
@@ -689,13 +694,15 @@
     const wishlistedProducts = state.allProducts.filter(p => state.wishlist.includes(p.id));
 
     DOM.wishlistItemsList.innerHTML = wishlistedProducts.map(product => {
-      const displayImg = product.displayImage || product.thumbnail;
+      const displayImg = product.displayImage || `assets/images/products/prod_${product.id}.webp`;
+      const fallbackImg = product.fallbackImage || product.thumbnail || '';
       return `
         <div class="wishlist-item">
           <img 
             src="${displayImg}" 
             alt="${escapeHTML(product.title)}" 
             class="wishlist-item-img" 
+            onerror="this.onerror=null; this.src='${fallbackImg}';"
             onclick="window.StacklyApp.closeWishlist(); window.StacklyApp.openProductModal(${product.id})"
           />
           <div class="wishlist-item-details">
