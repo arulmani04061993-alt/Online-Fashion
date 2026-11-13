@@ -16,6 +16,15 @@
   <!-- Custom Stylesheet -->
   <link rel="stylesheet" href="assets/css/styles.css" />
   <style>
+    html, body {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    html::-webkit-scrollbar, body::-webkit-scrollbar {
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important;
+    }
     .error-hero {
       min-height: 100vh;
       display: flex;
