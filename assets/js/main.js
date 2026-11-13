@@ -1,5 +1,5 @@
 /**
- * LUMIÈRE ATELIER - LUXURY FASHION BOUTIQUE
+ * STACKLY - LUXURY FASHION BOUTIQUE
  * Core JavaScript Application
  * Vanilla JS, Fetch API with Async/Await, LocalStorage, Modals, Cart & Wishlist
  */
@@ -28,7 +28,7 @@
 
   // Valid Coupons
   const COUPONS = {
-    'LUMIERE20': { rate: 0.20, label: '20% Off Spring Collection' },
+    'STACKLY20': { rate: 0.20, label: '20% Off Spring Collection' },
     'GOLD15': { rate: 0.15, label: '15% Off VIP Chic' },
     'FIRST10': { rate: 0.10, label: '10% Welcome Discount' }
   };
@@ -110,13 +110,13 @@
      ========================================================================== */
   function loadLocalStorage() {
     try {
-      const savedCart = localStorage.getItem('lumiere_cart');
+      const savedCart = localStorage.getItem('stackly_cart');
       if (savedCart) state.cart = JSON.parse(savedCart);
 
-      const savedWishlist = localStorage.getItem('lumiere_wishlist');
+      const savedWishlist = localStorage.getItem('stackly_wishlist');
       if (savedWishlist) state.wishlist = JSON.parse(savedWishlist);
 
-      const savedCoupon = localStorage.getItem('lumiere_coupon');
+      const savedCoupon = localStorage.getItem('stackly_coupon');
       if (savedCoupon && COUPONS[savedCoupon]) {
         state.discountCode = savedCoupon;
         state.discountRate = COUPONS[savedCoupon].rate;
@@ -127,17 +127,17 @@
   }
 
   function saveCart() {
-    localStorage.setItem('lumiere_cart', JSON.stringify(state.cart));
+    localStorage.setItem('stackly_cart', JSON.stringify(state.cart));
     if (state.discountCode) {
-      localStorage.setItem('lumiere_coupon', state.discountCode);
+      localStorage.setItem('stackly_coupon', state.discountCode);
     } else {
-      localStorage.removeItem('lumiere_coupon');
+      localStorage.removeItem('stackly_coupon');
     }
     updateCartUI();
   }
 
   function saveWishlist() {
-    localStorage.setItem('lumiere_wishlist', JSON.stringify(state.wishlist));
+    localStorage.setItem('stackly_wishlist', JSON.stringify(state.wishlist));
     updateWishlistUI();
     renderAllProductGrids();
   }
@@ -355,7 +355,7 @@
 
     return `
       <article class="product-card" data-product-id="${product.id}" data-aos="fade-up">
-        <div class="product-media" onclick="window.LumiereApp.openProductModal(${product.id})">
+        <div class="product-media" onclick="window.StacklyApp.openProductModal(${product.id})">
           <img 
             src="${displayImg}" 
             alt="${escapeHTML(product.title)}" 
@@ -370,18 +370,18 @@
             <button 
               class="btn-card-action btn-wishlist-toggle ${isWishlisted ? 'wishlist-active' : ''}" 
               title="Add to Wishlist" 
-              onclick="window.LumiereApp.toggleWishlist(${product.id})"
+              onclick="window.StacklyApp.toggleWishlist(${product.id})"
             >
               <i class="${isWishlisted ? 'fa-solid' : 'fa-regular'} fa-heart"></i>
             </button>
           </div>
-          <button class="btn-quick-view" onclick="event.stopPropagation(); window.LumiereApp.openProductModal(${product.id})">
+          <button class="btn-quick-view" onclick="event.stopPropagation(); window.StacklyApp.openProductModal(${product.id})">
             <i class="fa-regular fa-eye"></i> Quick View
           </button>
         </div>
         <div class="product-info">
           <span class="product-category-meta">${formatCategoryLabel(product.category || 'Atelier')}</span>
-          <h3 class="product-title" onclick="window.LumiereApp.openProductModal(${product.id})" title="${escapeHTML(product.title)}">
+          <h3 class="product-title" onclick="window.StacklyApp.openProductModal(${product.id})" title="${escapeHTML(product.title)}">
             ${escapeHTML(product.title)}
           </h3>
           <div class="product-rating">
@@ -394,7 +394,7 @@
             <span class="price-original">$${originalPrice}</span>
             <span class="price-discount">Save ${(product.discountPercentage || 15).toFixed(0)}%</span>
           </div>
-          <button class="btn-add-to-cart" onclick="window.LumiereApp.addToCart(${product.id})">
+          <button class="btn-add-to-cart" onclick="window.StacklyApp.addToCart(${product.id})">
             <i class="fa-solid fa-bag-shopping"></i> Add to Cart
           </button>
         </div>
@@ -424,7 +424,7 @@
           <i class="fa-solid fa-magnifying-glass" style="font-size: 3rem; color: var(--color-accent-gold); margin-bottom: 1rem;"></i>
           <h3 style="font-family: var(--font-serif); margin-bottom: 0.5rem;">No Products Found</h3>
           <p style="color: var(--color-text-muted); margin-bottom: 1.5rem;">Try adjusting your filters or search keywords.</p>
-          <button class="btn btn-outline" onclick="window.LumiereApp.resetFilters()">Clear Filters</button>
+          <button class="btn btn-outline" onclick="window.StacklyApp.resetFilters()">Clear Filters</button>
         </div>
       `;
       return;
@@ -517,7 +517,7 @@
       saveCart();
       showToast(`Coupon "${cleanCode}" applied: ${COUPONS[cleanCode].label}!`, 'success');
     } else {
-      showToast('Invalid coupon code. Try LUMIERE20 or GOLD15', 'error');
+      showToast('Invalid coupon code. Try STACKLY20 or GOLD15', 'error');
     }
   }
 
@@ -561,11 +561,11 @@
           <span class="cart-item-price">$${item.price.toFixed(2)}</span>
           <div class="cart-item-bottom">
             <div class="quantity-control">
-              <button class="qty-btn" onclick="window.LumiereApp.updateCartQty(${item.id}, -1)">-</button>
+              <button class="qty-btn" onclick="window.StacklyApp.updateCartQty(${item.id}, -1)">-</button>
               <input type="text" readonly class="qty-input" value="${item.quantity}" />
-              <button class="qty-btn" onclick="window.LumiereApp.updateCartQty(${item.id}, 1)">+</button>
+              <button class="qty-btn" onclick="window.StacklyApp.updateCartQty(${item.id}, 1)">+</button>
             </div>
-            <button class="cart-item-remove" onclick="window.LumiereApp.removeFromCart(${item.id})" title="Remove item">
+            <button class="cart-item-remove" onclick="window.StacklyApp.removeFromCart(${item.id})" title="Remove item">
               <i class="fa-regular fa-trash-can"></i>
             </button>
           </div>
@@ -680,7 +680,7 @@
           <div class="modal-specs-grid">
             <div class="spec-item">
               <span>Brand</span>
-              <span>${escapeHTML(product.brand || 'Lumière Atelier')}</span>
+              <span>${escapeHTML(product.brand || 'Stackly')}</span>
             </div>
             <div class="spec-item">
               <span>SKU</span>
@@ -779,9 +779,9 @@
       discountCode: state.discountCode
     };
 
-    const previousOrders = JSON.parse(localStorage.getItem('lumiere_orders') || '[]');
+    const previousOrders = JSON.parse(localStorage.getItem('stackly_orders') || '[]');
     previousOrders.push(orderRecord);
-    localStorage.setItem('lumiere_orders', JSON.stringify(previousOrders));
+    localStorage.setItem('stackly_orders', JSON.stringify(previousOrders));
 
     // Clear active cart
     state.cart = [];
@@ -1036,7 +1036,7 @@
   }
 
   // Global API exposed for inline button handlers
-  window.LumiereApp = {
+  window.StacklyApp = {
     addToCart,
     removeFromCart,
     updateCartQty: updateCartQuantity,
@@ -1083,3 +1083,4 @@
     init();
   }
 })();
+

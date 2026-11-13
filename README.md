@@ -1,4 +1,4 @@
-# LUMIÈRE ATELIER — Luxury Fashion & Clothing Boutique
+# STACKLY — Luxury Fashion & Clothing Boutique
 
 > **A premium, high-performance haute couture online boutique built with pure HTML5, CSS3, and modern Vanilla JavaScript, dynamically powered by the DummyJSON Products REST API.**
 
@@ -26,9 +26,9 @@
 5. **New Arrivals**: The freshest runway creations.
 6. **Trending Products**: Highest-rated styles favored by editorial stylists.
 7. **Best Sellers**: Iconic pieces with 5-star customer reviews.
-8. **Special Offers**: 3 promotional banners with interactive coupon code copy & apply buttons (`LUMIERE20`, `GOLD15`, `FIRST10`).
+8. **Special Offers**: 3 promotional banners with interactive coupon code copy & apply buttons (`STACKLY20`, `GOLD15`, `FIRST10`).
 9. **Customer Testimonials**: Discerning client quotes with star ratings and verified buyer avatars.
-10. **Newsletter Subscription**: VIP Lumière Society invitation with interactive submission and instant toast notification.
+10. **Newsletter Subscription**: VIP Stackly Society invitation with interactive submission and instant toast notification.
 11. **Footer**: Paris flagship address, concierge contacts, social links, collection links, and payment provider badges.
 12. **404 Page**: Custom standalone `404.html` error page matching luxury aesthetics.
 
@@ -37,7 +37,7 @@
 ### 2. Interactive Modals & E-Commerce Flow
 - **Product Details Modal**: High-resolution gallery preview, thumbnails, stock status, ratings, full specifications (Brand, SKU, Availability, Warranty), quantity adjustment, and Add to Bag.
 - **Shopping Cart Drawer**: Slideout bag showing thumbnail, title, price, quantity increment/decrement, item deletion, live subtotal, discount deductions, and complimentary shipping calculation.
-- **Promotional Coupons**: Supports `LUMIERE20` (20% off), `GOLD15` (15% off), and `FIRST10` (10% off).
+- **Promotional Coupons**: Supports `STACKLY20` (20% off), `GOLD15` (15% off), and `FIRST10` (10% off).
 - **Wishlist Functionality**: One-click heart toggle on cards and modal with state persisted across sessions.
 - **Order Confirmation Modal**: Full checkout process with order code generation and order history logging.
 - **LocalStorage Persistence**: Cart items, active coupons, wishlisted products, and completed orders are saved in browser `localStorage`.
@@ -88,3 +88,4 @@ online Fashion/
    python -m http.server 8000
    ```
 3. Open `http://localhost:8000` in your browser.
+

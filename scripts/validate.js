@@ -32,3 +32,4 @@ try {
   console.error('JavaScript syntax test: FAILED', e);
   process.exit(1);
 }
+
