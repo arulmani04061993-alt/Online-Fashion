@@ -2578,6 +2578,18 @@ ul, ol {
 
 /* 3. Small Tablets & Phablets (<= 768px) */
 @media (max-width: 768px) {
+  .hero-section {
+    min-height: auto;
+  }
+  .hero-content {
+    padding: 4rem 0 5.5rem 0;
+  }
+  .hero-nav {
+    display: none;
+  }
+  .hero-dots {
+    bottom: 1.5rem;
+  }
   .section {
     padding: 3.5rem 0;
   }
@@ -2713,21 +2725,27 @@ ul, ol {
     gap: 1.25rem;
   }
   .hero-content {
-    padding: 2.5rem 0;
+    padding: 3.5rem 0 5rem 0;
   }
   .hero-title {
-    font-size: 2.2rem;
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
   }
   .hero-desc {
-    font-size: 0.92rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
     margin-bottom: 1.75rem;
   }
   .hero-actions {
     flex-direction: column;
     width: 100%;
+    gap: 0.85rem;
+    margin-bottom: 1.5rem;
   }
   .hero-actions .btn {
     width: 100%;
+    padding: 0.85rem 1.25rem;
   }
   .toolbar-filters {
     flex-direction: column;
