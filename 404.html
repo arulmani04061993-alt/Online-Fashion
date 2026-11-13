@@ -31,8 +31,37 @@
       font-weight: 700;
       line-height: 1;
       color: var(--color-accent-gold-dark);
-      opacity: 0.35;
-      margin-bottom: -2rem;
+      opacity: 0.65;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+      animation: jump404 1.8s ease-in-out infinite;
+      transform-origin: bottom center;
+      cursor: default;
+      user-select: none;
+    }
+
+    @keyframes jump404 {
+      0%, 100% {
+        transform: translateY(0) scale(1, 1);
+      }
+      20% {
+        transform: translateY(-38px) scale(0.96, 1.05);
+      }
+      35% {
+        transform: translateY(0) scale(1.05, 0.95);
+      }
+      45% {
+        transform: translateY(-16px) scale(0.98, 1.02);
+      }
+      55% {
+        transform: translateY(0) scale(1.02, 0.98);
+      }
+      65% {
+        transform: translateY(-6px);
+      }
+      75% {
+        transform: translateY(0) scale(1, 1);
+      }
     }
     .error-title {
       font-family: var(--font-serif);
