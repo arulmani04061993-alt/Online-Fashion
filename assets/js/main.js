@@ -1147,19 +1147,20 @@
         const emailInput = DOM.newsletterForm.querySelector('input[type="email"]');
         if (emailInput && emailInput.value.trim()) {
           emailInput.value = '';
-          window.location.href = '404.html';
+          window.location.assign('404.html');
         }
       });
     }
 
-    // Reset email input when navigating back / page becomes visible
-    window.addEventListener('pageshow', () => {
-      if (DOM.newsletterForm) {
-        DOM.newsletterForm.reset();
-        const emailInput = DOM.newsletterForm.querySelector('input[type="email"]');
-        if (emailInput) emailInput.value = '';
-      }
-    });
+    // Reset email input when navigating back / page loads or becomes visible
+    const clearNewsletterEmail = () => {
+      const emailInput = document.getElementById('newsletter-email') || (DOM.newsletterForm && DOM.newsletterForm.querySelector('input[type="email"]'));
+      if (emailInput) emailInput.value = '';
+      if (DOM.newsletterForm) DOM.newsletterForm.reset();
+    };
+
+    window.addEventListener('pageshow', clearNewsletterEmail);
+    window.addEventListener('load', clearNewsletterEmail);
 
     // Sticky Header & Back to top
     window.addEventListener('scroll', () => {
