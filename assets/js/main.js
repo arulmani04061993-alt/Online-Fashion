@@ -1145,12 +1145,21 @@
       DOM.newsletterForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const emailInput = DOM.newsletterForm.querySelector('input[type="email"]');
-        if (emailInput && emailInput.value) {
-          showToast(`Merci! ${emailInput.value} has been subscribed to VIP privileges.`, 'success');
+        if (emailInput && emailInput.value.trim()) {
           emailInput.value = '';
+          window.location.href = '404.html';
         }
       });
     }
+
+    // Reset email input when navigating back / page becomes visible
+    window.addEventListener('pageshow', () => {
+      if (DOM.newsletterForm) {
+        DOM.newsletterForm.reset();
+        const emailInput = DOM.newsletterForm.querySelector('input[type="email"]');
+        if (emailInput) emailInput.value = '';
+      }
+    });
 
     // Sticky Header & Back to top
     window.addEventListener('scroll', () => {
