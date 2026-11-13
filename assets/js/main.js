@@ -886,6 +886,34 @@
      EVENT LISTENERS & BINDINGS
      ========================================================================== */
   function setupEventListeners() {
+    // Pricing Billing Switch (Monthly / Annual)
+    const billingSwitch = document.getElementById('billing-switch');
+    const monthlyLabel = document.getElementById('billing-monthly-label');
+    const annualLabel = document.getElementById('billing-annual-label');
+
+    if (billingSwitch) {
+      let isAnnual = false;
+      const toggleBilling = () => {
+        isAnnual = !isAnnual;
+        billingSwitch.classList.toggle('annual', isAnnual);
+        if (monthlyLabel) monthlyLabel.classList.toggle('active', !isAnnual);
+        if (annualLabel) annualLabel.classList.toggle('active', isAnnual);
+
+        document.querySelectorAll('.price-val').forEach(el => {
+          const targetPrice = isAnnual ? el.dataset.annual : el.dataset.monthly;
+          if (targetPrice) el.textContent = targetPrice;
+        });
+
+        document.querySelectorAll('.price-cycle').forEach(el => {
+          el.textContent = isAnnual ? '/month (billed annually)' : '/month';
+        });
+      };
+
+      billingSwitch.addEventListener('click', toggleBilling);
+      if (monthlyLabel) monthlyLabel.addEventListener('click', () => { if (isAnnual) toggleBilling(); });
+      if (annualLabel) annualLabel.addEventListener('click', () => { if (!isAnnual) toggleBilling(); });
+    }
+
     // Search input
     if (DOM.searchInput) {
       DOM.searchInput.addEventListener('input', (e) => {
@@ -1046,6 +1074,11 @@
     openCart,
     closeCart,
     applyCoupon,
+    selectMembership: (tierName, price) => {
+      showToast(`Selected "${tierName}" Membership ($${price}/mo). Welcome to Stackly Society!`, 'success');
+      const checkoutEl = document.getElementById('pricing');
+      if (checkoutEl) checkoutEl.scrollIntoView({ behavior: 'smooth' });
+    },
     resetFilters: () => {
       state.searchQuery = '';
       state.selectedCategory = 'all';

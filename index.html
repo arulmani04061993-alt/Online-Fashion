@@ -72,6 +72,7 @@
         <a href="#new-arrivals" class="nav-link">New Arrivals</a>
         <a href="#trending" class="nav-link">Trending</a>
         <a href="#special-offers" class="nav-link">Promotions</a>
+        <a href="#pricing" class="nav-link">VIP Memberships</a>
         <a href="#testimonials" class="nav-link">Clients</a>
         <a href="404.html" class="nav-link">Lookbook</a>
       </nav>
@@ -112,6 +113,7 @@
       <a href="#new-arrivals">New Arrivals</a>
       <a href="#trending">Trending Styles</a>
       <a href="#special-offers">Special Offers</a>
+      <a href="#pricing">VIP Pricing & Tiers</a>
       <a href="#testimonials">Testimonials</a>
       <a href="404.html">404 Error Showcase</a>
     </nav>
@@ -538,7 +540,169 @@
   </section>
 
   <!-- ========================================================================
-       CUSTOMER TESTIMONIALS (Section 8)
+       VIP ATELIER PRICING TIERS (Section 8 - Premium Static Pricing)
+       ======================================================================== -->
+  <section class="section section-warm" id="pricing">
+    <div class="container">
+      <header class="section-header" data-aos="fade-up">
+        <span class="section-subtitle">Exclusive Society Tiers</span>
+        <h2 class="section-title">Atelier <em>Membership & Privileges</em></h2>
+        <p class="section-description">
+          Elevate your boutique journey with bespoke stylist consultations, private seasonal archives, priority runway allocations, and concierge courier privileges.
+        </p>
+      </header>
+
+      <!-- Monthly / Annual Toggle -->
+      <div class="pricing-billing-toggle" data-aos="fade-up">
+        <span class="billing-label active" id="billing-monthly-label">Monthly Courtesy</span>
+        <div class="billing-switch" id="billing-switch" role="button" aria-label="Toggle Annual Billing" tabindex="0">
+          <div class="billing-slider"></div>
+        </div>
+        <span class="billing-label" id="billing-annual-label">
+          Annual Honorarium <span class="billing-save-badge">Save 25%</span>
+        </span>
+      </div>
+
+      <!-- 3 Tier Pricing Cards Grid -->
+      <div class="pricing-grid">
+        <!-- Tier 1: Maison Classic -->
+        <article class="pricing-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="pricing-tier-header">
+            <h3 class="pricing-tier-name">Maison Classic</h3>
+            <p class="pricing-tier-desc">Ideal for emerging fashion connoisseurs curating staple essentials.</p>
+          </div>
+          <div class="pricing-amount-box">
+            <span class="price-currency">$</span>
+            <span class="price-val" data-monthly="49" data-annual="39">49</span>
+            <span class="price-cycle">/month</span>
+          </div>
+          <ul class="pricing-features-list">
+            <li class="pricing-feature-item">
+              <i class="fa-solid fa-check"></i>
+              <span><strong>10% Permanent Courtesy</strong> on all ready-to-wear pieces</span>
+            </li>
+            <li class="pricing-feature-item">
+              <i class="fa-solid fa-check"></i>
+              <span>Complimentary standard continental shipping</span>
+            </li>
+            <li class="pricing-feature-item">
+              <i class="fa-solid fa-check"></i>
+              <span>Early access to seasonal public sales (24h prior)</span>
+            </li>
+            <li class="pricing-feature-item">
+              <i class="fa-solid fa-check"></i>
+              <span>Monthly digital haute lookbook & trend brief</span>
+            </li>
+            <li class="pricing-feature-item disabled">
+              <i class="fa-solid fa-xmark"></i>
+              <span>Dedicated personal Paris stylist consultation</span>
+            </li>
+            <li class="pricing-feature-item disabled">
+              <i class="fa-solid fa-xmark"></i>
+              <span>Bespoke custom garment tailoring credits</span>
+            </li>
+          </ul>
+          <div class="pricing-btn-wrap">
+            <button class="btn btn-outline" onclick="window.StacklyApp.selectMembership('Maison Classic', 49)">
+              Begin Classic Privilege
+            </button>
+          </div>
+        </article>
+
+        <!-- Tier 2: Haute Prestige (Featured Recommended) -->
+        <article class="pricing-card featured-tier" data-aos="fade-up" data-aos-delay="200">
+          <span class="pricing-ribbon">Most Preferred</span>
+          <div class="pricing-tier-header">
+            <h3 class="pricing-tier-name">Haute Prestige</h3>
+            <p class="pricing-tier-desc">Our flagship concierge tier with dedicated stylist access & runway reservations.</p>
+          </div>
+          <div class="pricing-amount-box">
+            <span class="price-currency">$</span>
+            <span class="price-val" data-monthly="129" data-annual="99">129</span>
+            <span class="price-cycle">/month</span>
+          </div>
+          <ul class="pricing-features-list">
+            <li class="pricing-feature-item">
+              <i class="fa-solid fa-check"></i>
+              <span><strong>20% Permanent Courtesy</strong> on all apparel, footwear & accessories</span>
+            </li>
+            <li class="pricing-feature-item">
+              <i class="fa-solid fa-check"></i>
+              <span><strong>Complimentary Global White-Glove</strong> courier delivery</span>
+            </li>
+            <li class="pricing-feature-item">
+              <i class="fa-solid fa-check"></i>
+              <span><strong>48-hour Private Pre-Sale Access</strong> to limited runway capsules</span>
+            </li>
+            <li class="pricing-feature-item">
+              <i class="fa-solid fa-check"></i>
+              <span>Bi-monthly 1-on-1 virtual styling with Paris studio stylists</span>
+            </li>
+            <li class="pricing-feature-item">
+              <i class="fa-solid fa-check"></i>
+              <span>$150 seasonal tailoring & bespoke alteration credit</span>
+            </li>
+            <li class="pricing-feature-item">
+              <i class="fa-solid fa-check"></i>
+              <span>Signature luxury gift box & keepsake hanger with each purchase</span>
+            </li>
+          </ul>
+          <div class="pricing-btn-wrap">
+            <button class="btn btn-accent" onclick="window.StacklyApp.selectMembership('Haute Prestige', 129)">
+              <i class="fa-solid fa-crown"></i> Acquire Haute Privilege
+            </button>
+          </div>
+        </article>
+
+        <!-- Tier 3: Atelier Sovereign -->
+        <article class="pricing-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="pricing-tier-header">
+            <h3 class="pricing-tier-name">Atelier Sovereign</h3>
+            <p class="pricing-tier-desc">Ultimate private salon status for serious collectors and VIP patrons.</p>
+          </div>
+          <div class="pricing-amount-box">
+            <span class="price-currency">$</span>
+            <span class="price-val" data-monthly="299" data-annual="239">299</span>
+            <span class="price-cycle">/month</span>
+          </div>
+          <ul class="pricing-features-list">
+            <li class="pricing-feature-item">
+              <i class="fa-solid fa-check"></i>
+              <span><strong>30% Permanent Courtesy</strong> on entire boutique inventory</span>
+            </li>
+            <li class="pricing-feature-item">
+              <i class="fa-solid fa-check"></i>
+              <span><strong>Unlimited Next-Day Courier</strong> across Europe, US & Asia</span>
+            </li>
+            <li class="pricing-feature-item">
+              <i class="fa-solid fa-check"></i>
+              <span>Invitations to <strong>Paris & Milan Fashion Week</strong> private salon presentations</span>
+            </li>
+            <li class="pricing-feature-item">
+              <i class="fa-solid fa-check"></i>
+              <span>Dedicated 24/7 personal WhatsApp/phone fashion concierge</span>
+            </li>
+            <li class="pricing-feature-item">
+              <i class="fa-solid fa-check"></i>
+              <span>Full custom made-to-measure tailoring allocation ($500 credit)</span>
+            </li>
+            <li class="pricing-feature-item">
+              <i class="fa-solid fa-check"></i>
+              <span>Complimentary private vault storage & seasonal garment preservation</span>
+            </li>
+          </ul>
+          <div class="pricing-btn-wrap">
+            <button class="btn btn-primary" onclick="window.StacklyApp.selectMembership('Atelier Sovereign', 299)">
+              Request Sovereign Induction
+            </button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       CUSTOMER TESTIMONIALS (Section 9)
        ======================================================================== -->
   <section class="section section-warm" id="testimonials">
     <div class="container">
