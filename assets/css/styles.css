@@ -2056,20 +2056,30 @@ ul, ol {
 .wishlist-drawer {
   position: fixed;
   top: 0;
-  right: -440px;
+  right: 0;
   width: 420px;
   max-width: 95vw;
   height: 100vh;
+  height: 100dvh;
   background: #ffffff;
   z-index: 3100;
   box-shadow: var(--shadow-lg);
   display: flex;
   flex-direction: column;
+  transform: translateX(100%);
   transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.wishlist-drawer::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 .wishlist-drawer.open {
-  transform: translateX(-440px);
+  transform: translateX(0);
 }
 
 .wishlist-header {
@@ -2210,20 +2220,30 @@ ul, ol {
 .cart-drawer {
   position: fixed;
   top: 0;
-  right: -440px;
+  right: 0;
   width: 420px;
   max-width: 95vw;
   height: 100vh;
+  height: 100dvh;
   background: #ffffff;
   z-index: 3100;
   box-shadow: var(--shadow-lg);
   display: flex;
   flex-direction: column;
+  transform: translateX(100%);
   transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.cart-drawer::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 .cart-drawer.open {
-  transform: translateX(-440px);
+  transform: translateX(0);
 }
 
 .cart-header {
@@ -2573,6 +2593,11 @@ ul, ol {
 }
 
 @media (max-width: 480px) {
+  .wishlist-drawer,
+  .cart-drawer {
+    width: 100% !important;
+    max-width: 100vw !important;
+  }
   .header-actions {
     gap: 0.2rem;
   }
