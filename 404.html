@@ -58,12 +58,12 @@
       <p class="error-desc">
         The bespoke archival piece or lookbook page you are seeking has retired to our private vault or never existed. Allow us to escort you back to our active runway showcase.
       </p>
-      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-        <a href="index.html" class="btn btn-primary">
-          <i class="fa-solid fa-house"></i> Boutique Home
-        </a>
-        <a href="index.html#catalog-section" class="btn btn-accent">
-          <i class="fa-solid fa-bag-shopping"></i> Browse Catalog
+      <div style="display: flex; gap: 1.25rem; justify-content: center; flex-wrap: wrap;">
+        <button onclick="window.history.length > 1 ? window.history.back() : window.location.href='index.html';" class="btn btn-outline" style="min-width: 170px;">
+          <i class="fa-solid fa-arrow-left"></i> Go Back
+        </button>
+        <a href="index.html" class="btn btn-primary" style="min-width: 170px;">
+          <i class="fa-solid fa-house"></i> Go to Home
         </a>
       </div>
     </div>
